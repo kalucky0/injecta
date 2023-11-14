@@ -1,4 +1,4 @@
-library needle;
+library injecta;
 
 import 'package:flutter/widgets.dart';
 
@@ -38,7 +38,7 @@ class ServiceRegistry extends InheritedWidget {
   }
 }
 
-extension Needle on BuildContext {
+extension Injecta on BuildContext {
   T read<T>() {
     return ServiceRegistry.of(this).read<T>();
   }
