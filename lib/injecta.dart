@@ -37,6 +37,11 @@ class ServiceRegistry extends InheritedWidget {
     }) as T;
   }
 
+  /// Resets the initialized instance of the service of type [T], if it exists.
+  void reset<T>() {
+    _initialized.removeWhere((e) => e is T);
+  }
+
   /// Returns the [ServiceRegistry] instance associated with the nearest
   /// ancestor [ServiceRegistry] found in the widget tree.
   static ServiceRegistry? maybeOf(BuildContext context) {
@@ -61,10 +66,15 @@ class ServiceRegistry extends InheritedWidget {
 
 /// An extension on [BuildContext] providing a convenient method to
 /// read services from the nearest [ServiceRegistry].
-extension InjectaExtension  on BuildContext {
+extension InjectaExtension on BuildContext {
   /// Reads and retrieves a service of type [T] from the nearest [ServiceRegistry].
   T read<T>() {
     return ServiceRegistry.of(this).read<T>();
+  }
+
+  /// Resets the initialized instance of the service of type [T], if it exists.
+  void reset<T>() {
+    ServiceRegistry.of(this).reset<T>();
   }
 }
 
