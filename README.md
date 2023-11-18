@@ -12,7 +12,7 @@ To use Injecta in your Flutter project, add the following dependency to your `pu
 
 ```yaml
 dependencies:
-  injecta: ^0.1.0
+  injecta: ^0.2.0
 ```
 
 Then, run: 
@@ -25,20 +25,19 @@ flutter pub get
 
 1. **Create a `ServiceRegistry`**
 \
-Wrap your `MaterialApp` or any other widget with a `ServiceRegistry`. Pass a list of functions that create instances of your services to the services parameter.
+Create your registry using `ServiceRegistry`. Pass a list of functions that create instances of your services to the services parameter.
 
 ```dart
-ServiceRegistry(
+final services = ServiceRegistry(
     services: [
         () => CounterService(),
     ],
-    child: const HomeScreen(),
-),
+);
 ```
 
 2. **Access Services in your Widgets**
 \
-Use the `context.read<T>()` method to access services within your widgets. The services will be lazily initialized and cached.
+Use the `context.get<T>()` method to access services within your widgets. The services will be lazily initialized and cached.
 
 ```dart
 class _HomeScreenState extends State<HomeScreen> {
@@ -46,10 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<CounterService>().increment();
+        services.get<CounterService>().increment();
         setState(() {});
       },
-      child: Text('${context.read<CounterService>().counter}'),
+      child: Text('${services.get<CounterService>().counter}'),
     );
   }
 }
