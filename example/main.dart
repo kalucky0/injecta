@@ -1,15 +1,14 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:injecta/injecta.dart';
 
+final services = ServiceRegistry(
+  services: [
+    () => CounterService(),
+  ],
+);
+
 void main() {
-  runApp(
-    ServiceRegistry(
-      services: [
-        () => CounterService(),
-      ],
-      child: const App(),
-    ),
-  );
+  runApp(const App());
 }
 
 class CounterService {
@@ -24,7 +23,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.read<CounterService>().increment(),
+      onTap: () => services.get<CounterService>().increment(),
     );
   }
 }
