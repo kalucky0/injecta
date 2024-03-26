@@ -1,3 +1,7 @@
+## [0.4.1] - 26.03.2024
+
+- Fix `getAll` method in `ServiceRegistry`
+
 ## [0.4.0] - 26.03.2024
 
 - Add `getAll` method to `ServiceRegistry`
