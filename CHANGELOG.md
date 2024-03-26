@@ -1,3 +1,7 @@
+## [0.3.0] - 26.03.2024
+
+- Add generic type to `ServiceRegistry`
+
 ## [0.2.0] - 18.11.2023
 
 - `ServiceRegistry` is no longer an `InheritedWidget``

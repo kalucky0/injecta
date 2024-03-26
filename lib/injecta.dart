@@ -2,7 +2,7 @@
 library injecta;
 
 /// A registry for managing and accessing services.
-class ServiceRegistry {
+class ServiceRegistry<S> {
   /// Creates a [ServiceRegistry].
   ///
   /// The [services] parameter is a list of functions that provide the services.
@@ -11,10 +11,10 @@ class ServiceRegistry {
   });
 
   /// A list of functions that provide services.
-  final List<Object Function()> services;
+  final List<S Function()> services;
 
   /// A list of initialized services to avoid redundant creation.
-  final List<Object> _initialized = [];
+  final List<S> _initialized = [];
 
   /// Reads and retrieves a service of type [T].
   ///
