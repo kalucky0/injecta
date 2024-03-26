@@ -1,3 +1,7 @@
+## [0.4.0] - 26.03.2024
+
+- Add `getAll` method to `ServiceRegistry`
+
 ## [0.3.0] - 26.03.2024
 
 - Add generic type to `ServiceRegistry`
